@@ -11,7 +11,7 @@ class GoodRepository {
         })
     }
 
-    async getOneByCategoryId(id: number): Promise<Good | null> {
+    async getOneById(id: number): Promise<Good | null> {
         return await this.prisma.good.findFirst({
             where: {
                 id
