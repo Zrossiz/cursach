@@ -1,4 +1,4 @@
-import { Good, PrismaClient } from "../generated/prisma/client.js";
+import { PrismaClient, Good } from "@prisma/client";
 
 class GoodRepository {
     constructor(private readonly prisma: PrismaClient) {}

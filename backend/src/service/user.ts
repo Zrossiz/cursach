@@ -1,9 +1,9 @@
-import { CreateUserDTO, LoginUserDTO } from "../dto/user.js";
-import UserRepository from "../repository/user.js";
-import { Prisma } from "../generated/prisma/client.js";
-import { UserAlreadyExistsError, UserInvalidLoginOrPassword } from "../errors/user.error.js";
+import { CreateUserDTO, LoginUserDTO } from "../dto/user";
+import UserRepository from "../repository/user";
+import { Prisma } from "@prisma/client";
+import { UserAlreadyExistsError, UserInvalidLoginOrPassword } from "../errors/user.error";
 import bcrypt from "bcrypt";
-import { Config } from "../config/index.js";
+import { Config } from "../config";
 import * as jwt from 'jsonwebtoken';
 
 class UserService {
@@ -14,11 +14,13 @@ class UserService {
         this.cfg = appCfg
     }
 
-    async register(payload: CreateUserDTO) {
+    async register(payload: CreateUserDTO): Promise<string> {
         try {
             const hashedPassword = this.hashPassword(payload.password);
 
-            await this.userRepository.create(payload.email, hashedPassword)
+            const userId = await this.userRepository.create(payload.email, hashedPassword);
+
+            return this.generateAccessToken(userId, payload.email);
         } catch (err) {
             if (
                 err instanceof Prisma.PrismaClientKnownRequestError &&
@@ -31,31 +33,27 @@ class UserService {
     }
 
     async login(payload: LoginUserDTO): Promise<string> {
-        try {
-            const user = await this.userRepository.getByEmail(payload.email);
-            if (!user) {
-                throw new UserInvalidLoginOrPassword();
-            }
-
-            if (!this.verifyPassword(payload.password, user?.password)) {
-                throw new UserInvalidLoginOrPassword();
-            }
-
-            return this.generateJWTKey(user.id, user.email);
-        } catch (err) {
-            throw err;
+        const user = await this.userRepository.getByEmail(payload.email);
+        if (!user) {
+            throw new UserInvalidLoginOrPassword();
         }
+
+        if (!this.verifyPassword(payload.password, user?.password)) {
+            throw new UserInvalidLoginOrPassword();
+        }
+
+        return this.generateAccessToken(user.id, user.email);
     }
 
-    hashPassword(password: string): string {
-        return bcrypt.hashSync(password, 3)
+    private hashPassword(password: string): string {
+        return bcrypt.hashSync(password, 8)
     }
 
-    verifyPassword(password: string, hash: string): boolean {
+    private verifyPassword(password: string, hash: string): boolean {
         return bcrypt.compareSync(password, hash)
     }
 
-    generateJWTKey(id: string, email: string): string {
+    private generateAccessToken(id: string, email: string): string {
         const dataToSign = {
             sub: id,
             email

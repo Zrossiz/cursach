@@ -1,4 +1,4 @@
-import { PrismaClient } from "../generated/prisma/client.js";
+import { PrismaClient } from "@prisma/client";
 
 class CardRepository {
     constructor(private readonly prisma: PrismaClient) {}

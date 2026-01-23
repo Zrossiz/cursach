@@ -1,4 +1,4 @@
-import { User, PrismaClient } from "../generated/prisma/client.js";
+import { PrismaClient, User } from "@prisma/client";
 
 class UserRepository {
   constructor(private readonly prisma: PrismaClient) {}
@@ -18,7 +18,7 @@ class UserRepository {
   } 
 
   async getByEmail(email: string): Promise<User | null> {
-    return await this.prisma.user.findFirst({
+    return await this.prisma.user.findUnique({
       where: {
         email
       }
