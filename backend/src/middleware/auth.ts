@@ -37,7 +37,7 @@ export function jwtCookieAuth(opts: JwtCookieOptions) {
 
     if (!token) {
       if (!required) return next();
-      return res.status(401).json({ error: "Missing auth token" });
+      return res.status(401).json({ error: "Missing auth token" }).send();
     }
 
     try {
@@ -53,7 +53,7 @@ export function jwtCookieAuth(opts: JwtCookieOptions) {
           : err?.name === "JsonWebTokenError"
             ? "Invalid token"
             : "Unauthorized";
-      return res.status(401).json({ error: msg });
+      return res.status(401).json({ error: msg }).send();
     }
   };
 }

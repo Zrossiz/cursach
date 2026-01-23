@@ -37,7 +37,7 @@ const userRoutes = new UserRouter(userController)
 const categoryRepo = new CategoryRepository(prismaClient);
 const categoryService = new CategoryService(categoryRepo)
 const categoryController = new CategoryController(categoryService, log)
-const categoryRoutes = new CategoryRouter(categoryController)
+const categoryRoutes = new CategoryRouter(categoryController, cfg.JWT_SECRET)
 
 app.use("/api/v1/users", userRoutes.router)
 app.use("/api/v1/categories", categoryRoutes.router)
