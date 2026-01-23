@@ -14,6 +14,7 @@ class UserRouter {
 
   private initRoutes() {
     this.router.post("/register", this.userController.register);
+    this.router.post("/login", this.userController.login);
   }
 }
 
