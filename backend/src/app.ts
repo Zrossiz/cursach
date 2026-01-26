@@ -7,6 +7,7 @@ import UserService from "./service/user";
 import { Config } from "./config/index";
 import UserController from "./controller/user";
 import winston from "winston";
+import cors from 'cors';
 import CategoryRepository from "./repository/category";
 import CategoryService from "./service/category";
 import CategoryController from "./controller/category";
@@ -20,11 +21,15 @@ import CardService from "./service/card";
 import CardController from "./controller/card";
 import CardRouter from "./routes/card";
 
+export const cfg = new Config();
 export const app = express();
 app.use(cookieParser());
 app.use(express.json()); 
+app.use(cors({
+  origin: cfg.ALLOWED_ORIGIN,
+  credentials: true
+}))
 
-export const cfg = new Config();
 export const log = winston.createLogger({
   level: "info",
   format: winston.format.combine(
