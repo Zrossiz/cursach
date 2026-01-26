@@ -27,12 +27,11 @@ export const RegistrationForm = () => {
         }
 
         try {
-            const res = await userRegistration(email, password);
+            await userRegistration(email, password);
             setSuccess(true)
             setTimeout(() => {
                 window.location.href = "/"
-            }, 1000)
-            console.log(res);
+            }, 2000)
         } catch (err) {
             setErrorMessage(returnMessageFromAxiosErr(err))
         }
