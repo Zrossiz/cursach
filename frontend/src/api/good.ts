@@ -1,6 +1,6 @@
 import { api } from "./axios"
 
-export const getGoodById = async (id: number) => {
+export const getGoodById = async (id: string) => {
     return await api.get(`/goods/${id}`)
 }
 

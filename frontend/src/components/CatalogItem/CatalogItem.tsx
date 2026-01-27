@@ -5,7 +5,7 @@ export const CatalogItem = ({ item, categoryId }: CatalogItemProps) => {
     
     return (
         <div>
-            <Link to={`/categories/${categoryId}/product/${item.id}`}>
+            <Link to={`/category/${categoryId}/good/${item.id}`}>
                 <div>item</div>
                 <div>{item.name}</div>
                 <div>{item.price}</div>

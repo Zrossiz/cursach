@@ -3,7 +3,7 @@ import './App.css'
 import LoginPage from './pages/login'
 import RegistrationPage from './pages/registratoin'
 import CategoryPage from './pages/category'
-import ProductPage from './pages/product'
+import GoodPage from './pages/good'
 import CatalopPage from './pages/catalog'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<CategoryPage />} />
         <Route path='/category/:categoryId' element={<CatalopPage />} />
-        <Route path='/category/:categoryId/product/:productId' element={<ProductPage />} />
+        <Route path='/category/:categoryId/good/:goodId' element={<GoodPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/registration' element={<RegistrationPage />} />
       </Routes>
