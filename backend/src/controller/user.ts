@@ -29,17 +29,17 @@ class UserController {
                 httpOnly: true, 
             }
 
-            return res.cookie('access_token', token, options).send()
+            return res.cookie('access_token', token, options)
         } catch (err) {
             if (err instanceof UserAlreadyExistsError) {
                 return res.status(409).json({
                     message: err.message
-                }).send()
+                })
             }
             this.log.error("register user error", err)
             return res.status(500).json({
                 message: "internal server error"
-            }).send()
+            })
         }
     }
 
@@ -54,17 +54,17 @@ class UserController {
                 httpOnly: true, 
             }
 
-            return res.cookie('access_token', token, options).send();
+            return res.cookie('access_token', token, options);
         } catch (err) {
             if (err instanceof UserInvalidLoginOrPassword) {
                 return res.status(401).json({
                     message: err.message
-                }).send()
+                })
             }
             this.log.error("register user error", err)
             return res.status(500).json({
                 message: "internal server error"
-            }).send()
+            })
         }
     }
 }

@@ -16,7 +16,7 @@ class CardRouter {
   }
 
   private initRoutes() {
-    this.router.get("/", jwtCookieAuth({secret: this.JWT_SECRET}), this.cardController.getCards);
+    this.router.get("/user", jwtCookieAuth({secret: this.JWT_SECRET}), this.cardController.getCards);
   }
 }
 

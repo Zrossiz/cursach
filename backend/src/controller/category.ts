@@ -18,9 +18,12 @@ class CategoryController {
         try {
             const categories = await this.categoryService.getAll()
 
-            return res.status(200).json(categories).send();
+            return res.status(200).json(categories);
         } catch (err) {
             this.log.error("get all categories error", err)
+            return res.status(500).json({
+                message: "internal server error"
+            })
         }
     }
 }

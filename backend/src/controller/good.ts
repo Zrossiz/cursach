@@ -18,17 +18,16 @@ class GoodController {
                 return res.status(400).json({ 
                     message: 
                     "category_id is invalid or missing" 
-                }).send();
+                });
             }
 
             const goods = await this.goodService.getAllByCategoryId(+categoryId)
-
-            return res.status(200).json(goods).send();
+            return res.status(200).json(goods)
         } catch (err) {
             this.log.error("get all by category id", err)
             return res.status(500).json({
                 message: "internal server error"
-            }).send()
+            })
         }
     }
 
@@ -38,17 +37,17 @@ class GoodController {
             if (!goodId || isNaN(Number(goodId))) {
                 return res.status(400).json({
                     message: "goodId is invalid or missing"
-                }).send()
+                })
             }
 
             const good = await this.goodService.getOneById(+goodId)
 
-            return res.status(200).json(good).send();
+            return res.status(200).json(good);
         } catch (err) {
             this.log.error("get one by id", err)
             return res.status(500).json({
                 message: "internal server error"
-            }).send()
+            })
         }
     }
 }
