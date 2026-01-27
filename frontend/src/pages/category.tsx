@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllCategories } from "../api/categories"
+import { getAllCategories } from "../api/category"
 import Layout from "../layout/Layout"
 import { CategoryList } from "../page-components/CategoryList/CategoryList"
 import type { CategoryItem } from "../types/category"
