@@ -56,7 +56,8 @@ class UserService {
     private generateAccessToken(id: string, email: string): string {
         const dataToSign = {
             sub: id,
-            email
+            email,
+            id,
         }
         return jwt.sign(dataToSign, this.cfg.JWT_SECRET, {
             expiresIn: "1h"

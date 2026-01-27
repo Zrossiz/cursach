@@ -29,7 +29,7 @@ class UserController {
                 httpOnly: true, 
             }
 
-            return res.cookie('access_token', token, options)
+            return res.cookie('access_token', token, options).send()
         } catch (err) {
             if (err instanceof UserAlreadyExistsError) {
                 return res.status(409).json({
@@ -54,7 +54,7 @@ class UserController {
                 httpOnly: true, 
             }
 
-            return res.cookie('access_token', token, options);
+            return res.cookie('access_token', token, options).send();
         } catch (err) {
             if (err instanceof UserInvalidLoginOrPassword) {
                 return res.status(401).json({

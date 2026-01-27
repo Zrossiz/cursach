@@ -1,5 +1,5 @@
 import { CardDTO } from "../dto/card.js";
-import { CashbackCategory } from "../dto/cashBackCategory.js";
+import { CashbackCategory } from "../dto/cashbackCategory.js";
 import CardRepository from "../repository/card.js";
 
 class CardService {
@@ -20,9 +20,10 @@ class CardService {
             
             const cashbacks: CashbackCategory[] = card.cashbackCategories.map(item => {
                 return {
-                    id: item.categoryId,
-                    name: item.category.name,
-                    percent: item.category.percent
+                    id: item.id,
+                    categoryId: item.categoryId,
+                    name: item.cashbackCategory.name,
+                    percent: item.cashbackCategory.percent,
                 }
             })
 

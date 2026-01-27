@@ -11,6 +11,7 @@ class CardRepository {
             include: {
                 cashbackCategories: {
                     include: {
+                        cashbackCategory: true,
                         category: true
                     }
                 },

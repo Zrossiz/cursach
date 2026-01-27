@@ -16,12 +16,12 @@ class CardController {
             const userId = req.user?.id;
 
             if (!userId) {
-                return res.status(401);
+                return res.status(401).send();
             }
 
             const cards = await this.cardsService.getUserCardsWithCashbacks(userId);
 
-            return res.status(200).json(cards)
+            return res.status(200).json(cards).send()
         } catch (err) {
             this.log.error("get cards: ", err)
             return res.status(500).json({

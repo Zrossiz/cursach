@@ -34,7 +34,6 @@ export function jwtCookieAuth(opts: JwtCookieOptions) {
     next: NextFunction,
   ) {
     const token: string | undefined = (req as any).cookies?.[cookieName];
-
     if (!token) {
       if (!required) return next();
       return res.status(401).json({ error: "Missing auth token" }).send();

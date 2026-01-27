@@ -1,4 +1,4 @@
-import { CashbackCategory } from "./cashBackCategory.js";
+import { CashbackCategory } from "./cashbackCategory";
 
 export type CardDTO = {
     id: number;
