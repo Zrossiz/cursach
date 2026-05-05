@@ -20,7 +20,7 @@ export const UserCards = ({ categoryId }: UserCardsProps) => {
     const getPreferredCards = (cards: CardItem[]) => {
         const cardsWithPrefferedCashbacks: CardItem[] = []
         cards.forEach(card => {
-            card.cashBackCategories.forEach(cashbackItem => {
+            card.cashbackCategories.forEach(cashbackItem => {
                 if (cashbackItem.categoryId === categoryId) {
                     cardsWithPrefferedCashbacks.push(card)
                 }

@@ -1,7 +1,7 @@
 export type GoodItem = {
     id: number;
     name: string;
-    categoryId: number;
+    productCategoryId: number;
     imgPath: string;
     price: string;
 }

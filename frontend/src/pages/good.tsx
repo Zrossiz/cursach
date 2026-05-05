@@ -4,6 +4,7 @@ import { GoodInfo } from "../page-components/GoodInfo/GoodInfo";
 import { useEffect, useState } from "react";
 import type { GoodItem } from "../types/good";
 import { getGoodById } from "../api/good";
+import axios from "axios";
 
 const GoodPage = () => {
     const { goodId } = useParams()
@@ -17,6 +18,15 @@ const GoodPage = () => {
             const res = await getGoodById(goodId)
             setGood(res.data);
         } catch (err) {
+            if (axios.isAxiosError(err)) {
+                if (err.response?.status === 401) {
+                    window.location.replace("/login");
+                    return;
+                }
+
+                console.log(err.response?.data);
+                return;
+            }
             console.log(err)
         }
     }
