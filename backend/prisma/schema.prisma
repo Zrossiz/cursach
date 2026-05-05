@@ -18,60 +18,60 @@ model User {
   @@map("users")
 }
 
-model Category {
-  id   Int    @id @default(autoincrement())
-  name String
-  slug String @unique
-
-  goods               Good[]
-  cashbacksCategories CardCashbackCategories[]
-
-  @@map("categories")
-}
-
-model Good {
-  id         Int     @id @default(autoincrement())
-  categoryId Int     @map("category_id")
-  name       String
-  imgPath    String  @map("img_path")
-  price      Decimal @db.Decimal(10, 2)
-
-  category Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
-
-  @@map("goods")
-}
-
 model Card {
   id     Int    @id @default(autoincrement())
   userId String @map("user_id")
   name   String
 
-  user               User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  cashbackCategories CardCashbackCategories[]
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cardCashbackRules CardCashbackRule[]
 
   @@map("cards")
 }
 
-model CashbackCategory {
-  id      Int    @id @default(autoincrement())
-  name    String
-  percent Int
+model ProductCategory {
+  id   Int    @id @default(autoincrement())
+  name String
+  slug String @unique
 
-  cards CardCashbackCategories[]
+  goods             Good[]
+  cardCashbackRules CardCashbackRule[]
 
-  @@map("cashback_categories")
+  @@map("product_categories")
 }
 
-model CardCashbackCategories {
-  id                 Int  @id @default(autoincrement())
-  cardId             Int  @map("card_id")
-  cashbackCategoryId Int  @map("cashback_category_id")
-  categoryId         Int  @map("category_id")
+model Good {
+  id                Int     @id @default(autoincrement())
+  productCategoryId Int     @map("product_category_id")
+  name              String
+  imgPath           String  @map("img_path")
+  price             Decimal @db.Decimal(10, 2)
 
-  category         Category?        @relation(fields: [categoryId], references: [id])
-  card             Card             @relation(fields: [cardId], references: [id])
-  cashbackCategory CashbackCategory @relation(fields: [cashbackCategoryId], references: [id])
+  productCategory ProductCategory @relation(fields: [productCategoryId], references: [id], onDelete: Cascade)
 
-  @@unique([cardId, cashbackCategoryId])
-  @@map("card_cashback_categories")
+  @@map("goods")
+}
+
+model BankCashbackCategory {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  cardCashbackRules CardCashbackRule[]
+
+  @@map("bank_cashback_categories")
+}
+
+model CardCashbackRule {
+  id                     Int @id @default(autoincrement())
+  cardId                 Int @map("card_id")
+  bankCashbackCategoryId Int @map("bank_cashback_category_id")
+  productCategoryId      Int @map("product_category_id")
+  percent                Int
+
+  card                 Card                 @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  bankCashbackCategory BankCashbackCategory @relation(fields: [bankCashbackCategoryId], references: [id], onDelete: Cascade)
+  productCategory      ProductCategory      @relation(fields: [productCategoryId], references: [id], onDelete: Cascade)
+
+  @@unique([cardId, bankCashbackCategoryId, productCategoryId])
+  @@map("card_cashback_rules")
 }

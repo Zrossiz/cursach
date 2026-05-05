@@ -9,10 +9,10 @@ class CardRepository {
                 userId: userId
             },
             include: {
-                cashbackCategories: {
+                cardCashbackRules: {
                     include: {
-                        cashbackCategory: true,
-                        category: true
+                        bankCashbackCategory: true,
+                        productCategory: true,
                     }
                 },
                 

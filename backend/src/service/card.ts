@@ -15,19 +15,19 @@ class CardService {
             const cardWithCashBack: CardDTO = {
                 id: card.id,
                 name: card.name,
-                cashBackCategories: []
+                cashbackCategories: []
             }
             
-            const cashbacks: CashbackCategory[] = card.cashbackCategories.map(item => {
+            const cashbacks: CashbackCategory[] = card.cardCashbackRules.map(item => {
                 return {
                     id: item.id,
-                    categoryId: item.categoryId,
-                    name: item.cashbackCategory.name,
-                    percent: item.cashbackCategory.percent,
+                    categoryId: item.productCategoryId,
+                    name: item.bankCashbackCategory.name,
+                    percent: item.percent,
                 }
             })
 
-            cardWithCashBack.cashBackCategories = cashbacks;
+            cardWithCashBack.cashbackCategories = cashbacks;
 
             return cardWithCashBack
         });

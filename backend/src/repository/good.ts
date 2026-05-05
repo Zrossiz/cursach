@@ -3,10 +3,10 @@ import { PrismaClient, Good } from "@prisma/client";
 class GoodRepository {
     constructor(private readonly prisma: PrismaClient) {}
 
-    async getAllByCategoryId(categoryId: number): Promise<Good[]> {
+    async getAllByCategoryId(productCategoryId: number): Promise<Good[]> {
         return await this.prisma.good.findMany({
             where: {
-                categoryId
+                productCategoryId
             }
         })
     }

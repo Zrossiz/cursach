@@ -21,7 +21,7 @@ class CardController {
 
             const cards = await this.cardsService.getUserCardsWithCashbacks(userId);
 
-            return res.status(200).json(cards).send()
+            return res.status(200).json(cards)
         } catch (err) {
             this.log.error("get cards: ", err)
             return res.status(500).json({
