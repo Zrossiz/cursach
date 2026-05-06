@@ -1,6 +1,8 @@
+import styles from './Header.module.scss';
+
 const Header = () => {
     return (
-        <div>header</div>
+        <div className={styles.wrapper}>header</div>
     )
 }
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
-import { getAllCategories } from "../api/category"
-import Layout from "../layout/Layout"
-import { CategoryList } from "../page-components/CategoryList/CategoryList"
-import type { CategoryItem } from "../types/category"
+import { getAllCategories } from "@/api/category"
+import Layout from "@/layout/Layout"
+import { CategoryList } from "@/page-components/CategoryList/CategoryList"
+import type { CategoryItem } from "@/types/category"
 import axios from "axios"
+import styles from './Category.module.scss';
 
 const CategoryPage = () => {
     const [categories, setCategories] = useState<CategoryItem[]>([])
@@ -33,7 +34,9 @@ const CategoryPage = () => {
 
     return (
         <Layout>
-            <CategoryList items={categories} />
+            <div className={styles.wrapper}>
+                <CategoryList items={categories} />
+            </div>
         </Layout>
     )
 }

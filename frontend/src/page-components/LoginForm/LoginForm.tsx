@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { userLogin } from "../../api/user";
 import { returnMessageFromAxiosErr } from "../../utils/error";
+import styles from './LoginForm.module.scss';
+import { Link } from "react-router-dom";
 
 export const LoginForm = () => {
     const [email, setEmail] = useState("");
@@ -32,32 +34,41 @@ export const LoginForm = () => {
     }
 
     return (
-        <div>
-            <div>Логин</div>
+        <div className={styles.wrapper}>
+            <div className={styles.title}>Логин</div>
             {success && (
                 <div>Успешная аутентификация!</div>
             )}
             {errorMessage !== "" && (
                 <div>Ошибка: {errorMessage}</div>
             )}
-            <div>
-                <input 
-                    type="text" 
-                    placeholder="Введите email"
-                    value={email} 
-                    onChange={
-                        (e) => setEmail(e.target.value)
-                    } 
-                />
-                <input 
-                    type="password" 
-                    placeholder="Введите пароль"
-                    value={password} 
-                    onChange={
-                        (e) => setPassword(e.target.value)
-                    } 
-                />
-                <button onClick={submit}>Логин</button>
+            <div className={styles.formWrapper}>
+                <div className={styles.input}>
+                    <input 
+                        type="text" 
+                        placeholder="Введите email"
+                        value={email} 
+                        onChange={
+                            (e) => setEmail(e.target.value)
+                        } 
+                    />
+                </div>
+                <div className={styles.input}>
+                    <input 
+                        type="password" 
+                        placeholder="Введите пароль"
+                        value={password} 
+                        onChange={
+                            (e) => setPassword(e.target.value)
+                        } 
+                    />
+                </div>
+                <div className={styles.button}>
+                    <button onClick={submit}>Логин</button>
+                </div>
+                <div className={styles.loginRedirect}>
+                    <Link to={"/registration"}>Регистрация</Link>
+                </div>
             </div>
         </div>
     )

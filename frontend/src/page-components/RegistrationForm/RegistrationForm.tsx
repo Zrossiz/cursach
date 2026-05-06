@@ -1,6 +1,8 @@
 import { useState } from "react"
-import { userRegistration } from "../../api/user";
-import { returnMessageFromAxiosErr } from "../../utils/error";
+import { userRegistration } from "@/api/user";
+import { returnMessageFromAxiosErr } from "@/utils/error";
+import styles from './RegistrationForm.module.scss';
+import { Link } from "react-router-dom";
 
 export const RegistrationForm = () => {
     const [email, setEmail] = useState("");
@@ -38,15 +40,15 @@ export const RegistrationForm = () => {
     }
 
     return (
-        <div>
-            <div>Регистрация</div>
+        <div className={styles.wrapper}>
+            <div className={styles.title}>Регистрация</div>
             {errorMessage !== "" && (
                 <div>Ошибка: {errorMessage}</div>
             )}
             {success && (
                 <div>Успешная регистрация!</div>
             )}
-            <div>
+            <div className={styles.inputsWrapper}>
                 <input 
                     type="text" 
                     placeholder="Введите email"
@@ -72,6 +74,9 @@ export const RegistrationForm = () => {
                     } 
                 />
                 <button onClick={submit}>Регистрация</button>
+            </div>
+            <div className={styles.loginRedirect}>
+                <Link to={"/login"}>Аутентификация</Link>
             </div>
         </div>
     )

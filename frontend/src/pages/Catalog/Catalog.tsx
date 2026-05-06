@@ -1,9 +1,9 @@
-import Layout from "../layout/Layout"
-import { getAllGoodsByCategory } from "../api/good"
+import Layout from "@/layout/Layout"
+import { getAllGoodsByCategory } from "@/api/good"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import type { GoodItem } from "../types/good"
-import { CatalogList } from "../page-components/CatalogList/CatalogList"
+import type { GoodItem } from "@/types/good"
+import { CatalogList } from "@/page-components/CatalogList/CatalogList"
 import axios from "axios"
 
 const CatalopPage = () => {

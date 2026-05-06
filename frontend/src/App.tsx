@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
-import LoginPage from './pages/login'
-import RegistrationPage from './pages/registratoin'
-import CategoryPage from './pages/category'
-import GoodPage from './pages/good'
-import CatalopPage from './pages/catalog'
+import LoginPage from '@/pages/Login/Login'
+import RegistrationPage from '@/pages/Registration/Registratoin'
+import CatalopPage from '@/pages/Catalog/Catalog'
+import CategoryPage from '@/pages/Category/Category'
+import GoodPage from '@/pages/Good/good'
 
 function App() {
 
