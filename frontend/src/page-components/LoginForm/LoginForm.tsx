@@ -40,34 +40,37 @@ export const LoginForm = () => {
                 <div>Успешная аутентификация!</div>
             )}
             {errorMessage !== "" && (
-                <div>Ошибка: {errorMessage}</div>
+                <div className={styles.errWrapper}>Ошибка: {errorMessage}</div>
             )}
             <div className={styles.formWrapper}>
                 <div className={styles.input}>
-                    <input 
-                        type="text" 
+                  <div className={styles.inputTitle}>Email</div>
+                    <input
+                        type="text"
                         placeholder="Введите email"
-                        value={email} 
+                        value={email}
                         onChange={
                             (e) => setEmail(e.target.value)
-                        } 
+                        }
                     />
                 </div>
                 <div className={styles.input}>
-                    <input 
-                        type="password" 
+                    <div className={styles.inputTitle}>Пароль</div>
+                    <input
+                        type="password"
                         placeholder="Введите пароль"
-                        value={password} 
+                        value={password}
                         onChange={
                             (e) => setPassword(e.target.value)
-                        } 
+                        }
                     />
                 </div>
                 <div className={styles.button}>
-                    <button onClick={submit}>Логин</button>
+                    <button disabled={email == "" || password == ""} onClick={submit}>Войти</button>
                 </div>
                 <div className={styles.loginRedirect}>
-                    <Link to={"/registration"}>Регистрация</Link>
+                    <span>Еще нет аккаунта?</span>
+                    <Link to={"/registration"}>Зарегистрируйтесь!</Link>
                 </div>
             </div>
         </div>
