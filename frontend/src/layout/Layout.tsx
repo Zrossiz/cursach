@@ -1,5 +1,4 @@
 import Header from "./Header/Header"
-import Footer from "./Footer/Footer"
 import type { LayoutProps } from "./Layout.props"
 import styles from './Layout.module.scss'
 
@@ -10,7 +9,6 @@ const Layout = ({ children }: LayoutProps) => {
             <main className={styles.main}>
                 {children}
             </main>
-            <Footer />
         </div>
     )
 }

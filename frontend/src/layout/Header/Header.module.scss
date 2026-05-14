@@ -1,3 +1,30 @@
 .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 80%;
     text-align: center;
+    background-color: #D9D9D9;
+    min-height: 50px;
+    padding: 5px 8px;
+
+    .logoWrapper {
+        background-color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+    }
+
+    .avatarWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
 }
