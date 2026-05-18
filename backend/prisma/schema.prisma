@@ -30,9 +30,10 @@ model Card {
 }
 
 model ProductCategory {
-  id   Int    @id @default(autoincrement())
-  name String
-  slug String @unique
+  id      Int    @id @default(autoincrement())
+  name    String
+  imgPath String @map("img_path") @default("")
+  slug    String @unique
 
   goods             Good[]
   cardCashbackRules CardCashbackRule[]
