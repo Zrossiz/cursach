@@ -5,7 +5,7 @@ const Header = () => {
         <div className={styles.wrapper}>
             <div className={styles.logoWrapper}></div>
             <div className={styles.avatarWrapper}>
-                <img src='user.svg'/>
+                <img src='/user.svg'/>
             </div>
         </div>
     )

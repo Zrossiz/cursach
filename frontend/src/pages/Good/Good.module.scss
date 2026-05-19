@@ -1,0 +1,157 @@
+.page {
+  padding: 32px 36px;
+  background: #fff;
+  min-height: 100vh;
+  color: #111;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1280px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.slider,
+.specs,
+.info {
+  background: #f1f1f1;
+  border-radius: 16px;
+}
+
+.slider {
+  height: 520px;
+  padding: 34px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.imageBox {
+  flex: 1;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arrow {
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.specs {
+  min-height: 360px;
+  padding: 28px;
+}
+
+.specs h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.info {
+  min-height: 840px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  margin: 0 0 36px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.productName {
+  margin: 0 0 32px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  gap: 110px;
+  margin-bottom: 36px;
+  font-size: 20px;
+}
+
+.divider {
+  height: 1px;
+  background: #cfcfcf;
+  margin-bottom: 36px;
+}
+
+.props {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 22px;
+}
+
+.props p {
+  margin: 0;
+}
+
+.colors {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 22px;
+}
+
+.colors button {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  cursor: pointer;
+}
+
+.buyButton {
+  margin-top: 70px;
+  height: 76px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .info {
+    min-height: auto;
+  }
+
+  .slider {
+    height: 360px;
+  }
+}
